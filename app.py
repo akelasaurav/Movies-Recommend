@@ -2,13 +2,6 @@ import streamlit as st
 import pandas as pd
 import pickle
 import requests
-import os
-import pickle
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-movie_dict = pickle.load(open(os.path.join(BASE_DIR, 'movie_dic.pkl'), 'rb'))
-similarity = pickle.load(open(os.path.join(BASE_DIR, 'similarity.pkl'), 'rb'))
 
 
 
@@ -45,10 +38,10 @@ def recommend(movie):
         recommended_movies_poster.append(fetch_poster(movie_id))
     return recommended_movies,recommended_movies_poster
 
-# movie_dict= pickle.load(open('movie_dic.pkl','rb'))
-# movies = pd.DataFrame(movie_dict)
-#
-# similarity= pickle.load(open('similarity.pkl','rb'))
+movie_dict= pickle.load(open('movie_dic.pkl','rb'))
+movies = pd.DataFrame(movie_dict)
+
+similarity= pickle.load(open('similarity.pkl','rb'))
 
 
 st.title('Movie Recommender System')
